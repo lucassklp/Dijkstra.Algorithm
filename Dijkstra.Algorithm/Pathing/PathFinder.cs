@@ -101,7 +101,7 @@ namespace Dijkstra.Algorithm.Pathing
 
         private static Path Build(Node origin, Node destination, List<Record> records)
         {
-            var path = Path.Create(origin);
+            var path = new Path(origin);
 
             foreach (var segment in PathSegments(destination, records))
                 path.AddSegment(segment);
