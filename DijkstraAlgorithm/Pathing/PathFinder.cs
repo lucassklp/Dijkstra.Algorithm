@@ -10,7 +10,7 @@ namespace DijkstraAlgorithm.Pathing
     {
         private readonly Graph _graph;
 
-        public PathFinder(Graph graph)
+        internal PathFinder(Graph graph)
         {
             if (graph == null)
                 throw new PathFinderException("Cannot create path finder with null graph.");
@@ -168,6 +168,15 @@ namespace DijkstraAlgorithm.Pathing
                 Weight = weight;
                 PreviousVertex = previousVertex;
             }
+        }
+    }
+
+    public static class PathFinderExtensions
+    {
+        public static Path Dijkstra(this Graph graph, string origin, string destination)
+        {
+            var pathFinder = new PathFinder(graph);
+            return pathFinder.FindShortestPath(graph.GetNode(origin), graph.GetNode(destination));
         }
     }
 }

@@ -8,7 +8,6 @@ namespace DijkstraAlgorithm.Tests
     public class UniDirectionalTests
     {
         private readonly Graph _graph;
-        private readonly PathFinder _pathFinder;
 
         public UniDirectionalTests()
         {
@@ -68,7 +67,6 @@ namespace DijkstraAlgorithm.Tests
                 .AddLink("J", "I", 8);
 
             _graph = builder.Build();
-            _pathFinder = new PathFinder(_graph);
         }
 
         [Theory]
@@ -161,13 +159,11 @@ namespace DijkstraAlgorithm.Tests
         [InlineData("J", "I", 8d)]
         public void Test(string origin, string destination, double weight)
         {
-            var path = _pathFinder.FindShortestPath(
-                _graph.Nodes.Single(node => node.Id == origin),
-                _graph.Nodes.Single(node => node.Id == destination));
+            var path = _graph.Dijkstra(origin, destination);
 
-            Assert.Equal(path.Origin.Id, origin);
-            Assert.Equal(path.Destination.Id, destination);
-            Assert.Equal(path.Segments.Sum(s => s.Weight), weight);
+            Assert.Equal(origin, path.Origin.Id);
+            Assert.Equal(destination, path.Destination.Id);
+            Assert.Equal(weight, path.Segments.Sum(s => s.Weight));
         }
     }
 }

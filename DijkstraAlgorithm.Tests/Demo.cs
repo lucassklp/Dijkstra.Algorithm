@@ -8,7 +8,7 @@ namespace DijkstraAlgorithm.Tests
     public class Demo
     {
         [Fact]
-        public void Example()
+        public void Test1()
         {
             // Create graph
             var builder = new GraphBuilder();
@@ -46,33 +46,78 @@ namespace DijkstraAlgorithm.Tests
 
             var graph = builder.Build();
 
-            // Create path finder
-            var pathFinder = new PathFinder(graph);
-
             // Find path
             const string origin = "A", destination = "C";
 
-            var path = pathFinder.FindShortestPath(
-                graph.Nodes.Single(node => node.Id == origin),
-                graph.Nodes.Single(node => node.Id == destination));
+            var path = graph.Dijkstra(origin, destination);
 
             // Assert results
-            Assert.Equal(path.Origin.Id, origin);
-            Assert.Equal(path.Destination.Id, destination);
-            Assert.Equal(path.Segments.Count, 3);
-            Assert.Equal(path.Segments.Sum(s => s.Weight), 7);
+            Assert.Equal(origin, path.Origin.Id);
+            Assert.Equal(destination, path.Destination.Id);
+            Assert.Equal(3, path.Segments.Count);
+            Assert.Equal(7, path.Segments.Sum(s => s.Weight));
 
-            Assert.Equal(path.Segments.ElementAt(0).Origin.Id, "A");
-            Assert.Equal(path.Segments.ElementAt(0).Weight, 1);
-            Assert.Equal(path.Segments.ElementAt(0).Destination.Id, "D");
+            Assert.Equal("A", path.Segments.ElementAt(0).Origin.Id);
+            Assert.Equal(1, path.Segments.ElementAt(0).Weight);
+            Assert.Equal("D", path.Segments.ElementAt(0).Destination.Id);
 
-            Assert.Equal(path.Segments.ElementAt(1).Origin.Id, "D");
-            Assert.Equal(path.Segments.ElementAt(1).Weight, 1);
-            Assert.Equal(path.Segments.ElementAt(1).Destination.Id, "E");
+            Assert.Equal("D", path.Segments.ElementAt(1).Origin.Id);
+            Assert.Equal(1, path.Segments.ElementAt(1).Weight);
+            Assert.Equal("E", path.Segments.ElementAt(1).Destination.Id);
 
-            Assert.Equal(path.Segments.ElementAt(2).Origin.Id, "E");
-            Assert.Equal(path.Segments.ElementAt(2).Weight, 5);
-            Assert.Equal(path.Segments.ElementAt(2).Destination.Id, "C");
+            Assert.Equal("E", path.Segments.ElementAt(2).Origin.Id);
+            Assert.Equal(5, path.Segments.ElementAt(2).Weight);
+            Assert.Equal("C", path.Segments.ElementAt(2).Destination.Id);
+        }
+
+
+        [Fact]
+        public void Test2()
+        {
+            // Create graph
+            var builder = new GraphBuilder();
+
+            builder
+                .AddNode("A")
+                .AddNode("B")
+                .AddNode("C")
+                .AddNode("D")
+                .AddNode("E")
+                .AddNode("F");
+
+            builder
+                .AddLink("A", "B", 10)
+                .AddLink("A", "C", 15)
+                .AddLink("B", "D", 12)
+                .AddLink("B", "F", 15)
+                .AddLink("C", "E", 10)
+                .AddLink("D", "F", 1)
+                .AddLink("D", "E", 2);
+
+            var graph = builder.Build();
+
+            // Find path
+            const string origin = "A", destination = "E";
+
+            var path = graph.Dijkstra(origin, destination);
+
+            // Assert results
+            Assert.Equal(origin, path.Origin.Id);
+            Assert.Equal(destination, path.Destination.Id);
+            Assert.Equal(3, path.Segments.Count);
+            Assert.Equal(24, path.Segments.Sum(s => s.Weight));
+
+            Assert.Equal("A", path.Segments.ElementAt(0).Origin.Id);
+            Assert.Equal(10, path.Segments.ElementAt(0).Weight);
+            Assert.Equal("B", path.Segments.ElementAt(0).Destination.Id);
+
+            Assert.Equal("B", path.Segments.ElementAt(1).Origin.Id);
+            Assert.Equal(12, path.Segments.ElementAt(1).Weight);
+            Assert.Equal("D", path.Segments.ElementAt(1).Destination.Id);
+
+            Assert.Equal("D", path.Segments.ElementAt(2).Origin.Id);
+            Assert.Equal(2, path.Segments.ElementAt(2).Weight);
+            Assert.Equal("E", path.Segments.ElementAt(2).Destination.Id);
         }
     }
 }

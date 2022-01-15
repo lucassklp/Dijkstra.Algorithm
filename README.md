@@ -1,14 +1,22 @@
 # Dijkstra Algorithm
 
-![Build status](https://ci.appveyor.com/api/projects/status/32pxjo4lkh5h3peq?svg=true)
-
 > Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph. [wikipedia](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
 
-## Nuget Packages
+This is a fork of [agabani's dijkstra C# implementation](https://github.com/agabani/DijkstraAlgorithm) and I have to thanks him. I did nothing but improve his good work and publish on Nuget.
 
-| Nuget Package Name | Nuget Package URL                                                  |
-|--------------------|--------------------------------------------------------------------|
-| DijkstraAlgorithm  | https://www.myget.org/feed/agabani/package/nuget/DijkstraAlgorithm |
+## Installation
+
+If you are using Package Manager:
+
+```bash
+Install-Package DijkstraAlgorithm -Version 1.0.0
+```
+
+If you are using .NET CLI
+
+```bash
+dotnet add package DijkstraAlgorithm --version 1.0.0
+```
 
 ## Example Usage
 
@@ -49,15 +57,10 @@ builder
 
 var graph = builder.Build();
 
-// Create path finder
-var pathFinder = new PathFinder(graph);
-
 // Find path
 const string origin = "A", destination = "C";
 
-var path = pathFinder.FindShortestPath(
-    graph.Nodes.Single(node => node.Id == origin),
-    graph.Nodes.Single(node => node.Id == destination));
+var path = graph.Dijkstra(origin, destination);
 
 // Assert results
 Assert.Equal(path.Origin.Id, origin);

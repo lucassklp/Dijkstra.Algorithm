@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DijkstraAlgorithm.Graphing
 {
@@ -17,6 +18,8 @@ namespace DijkstraAlgorithm.Graphing
         {
             return new Graph();
         }
+
+        public Node GetNode(string id) => Nodes.Single(node => node.Id == id);
 
         internal void Add(Node node)
         {

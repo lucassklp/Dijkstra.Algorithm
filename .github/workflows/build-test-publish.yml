@@ -1,0 +1,39 @@
+name: Build, Test and Publish
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.101
+        source-url: https://nuget.pkg.github.com/lucassklp/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: |
+        cd DijkstraAlgorithm
+        dotnet build --configuration Release --no-restore
+    - name: Pack
+      run: |  
+          cd DijkstraAlgorithm
+          dotnet pack -c Release -o out  
+    - name: Push DijkstraAlgorithm to GitHub registry
+      run: |
+        dotnet nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/lucassklp/index.json -Username lucassklp -Password ${{ secrets.GITHUB_TOKEN }}
+        dotnet nuget push ./DijkstraAlgorithm/out/*.nupkg --skip-duplicate
+    - name: Publish DijkstraAlgorithm to nuget.org
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+          PROJECT_FILE_PATH: DijkstraAlgorithm/DijkstraAlgorithm.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
