@@ -24,14 +24,17 @@ jobs:
       run: |
         cd DijkstraAlgorithm
         dotnet build --configuration Release --no-restore
+    
     - name: Pack
       run: |  
           cd DijkstraAlgorithm
           dotnet pack -c Release -o out  
+    
     - name: Push DijkstraAlgorithm to GitHub registry
       run: |
-        dotnet nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/lucassklp/index.json -Username lucassklp -Password ${{ secrets.GITHUB_TOKEN }}
+        dotnet nuget add source -name "GPR" -Source https://nuget.pkg.github.com/lucassklp/index.json -Username lucassklp -Password ${{ secrets.GITHUB_TOKEN }}
         dotnet nuget push ./DijkstraAlgorithm/out/*.nupkg --skip-duplicate
+    
     - name: Publish DijkstraAlgorithm to nuget.org
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:
