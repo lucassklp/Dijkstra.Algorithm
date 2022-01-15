@@ -25,6 +25,15 @@ namespace Dijkstra.Algorithm.Graphing
             return this;
         }
 
+        public GraphBuilder RemoveNode(string id)
+        {
+            if (!_nodes.ContainsKey(id))
+                throw new GraphBuilderException($"Node \"{id}\" do not exists.");
+
+            _nodes.Remove(id);
+            return this;
+        }
+
         public GraphBuilder AddBidirectionalLink(string sourceId, string destinationId, double weight)
         {
             AddLink(sourceId, destinationId, weight);
@@ -41,6 +50,15 @@ namespace Dijkstra.Algorithm.Graphing
                 throw new GraphBuilderException($"Link \"{sourceId}\" -> \"{destinationId}\" already exists.");
 
             _links[sourceId].Add(destinationId, node => Link.Create(weight, node));
+            return this;
+        }
+
+        public GraphBuilder RemoveLink(string sourceId, string destinationId)
+        {
+            if (!_links.ContainsKey(sourceId) && !_links[sourceId].ContainsKey(destinationId))
+                throw new GraphBuilderException($"Link \"{sourceId}\" -> \"{destinationId}\" do not exists.");
+
+            _links[sourceId].Remove(destinationId);
             return this;
         }
 
