@@ -1,13 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>lucassklp</Authors>
-    <PackageLicense>https://github.com/lucassklp/Dijkstra.Algorithm/blob/master/LICENSE</PackageLicense>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Lucas Simas</Authors>
+    <Description>Implementation of Dijkstra's algorithm with graph builder.</Description>
     <PackageProjectUrl>https://github.com/lucassklp/Dijkstra.Algorithm</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lucassklp/Dijkstra.Algorithm</RepositoryUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageTags>Dijkstra Algorithm</PackageTags>
-    <Version>1.0.0</Version>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\resources\logo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>
