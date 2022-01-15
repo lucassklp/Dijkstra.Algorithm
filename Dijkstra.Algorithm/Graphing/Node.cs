@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DijkstraAlgorithm.Graphing
+namespace Dijkstra.Algorithm.Graphing
 {
     public class Node
     {

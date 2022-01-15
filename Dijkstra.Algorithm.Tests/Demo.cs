@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using DijkstraAlgorithm.Graphing;
-using DijkstraAlgorithm.Pathing;
+using Dijkstra.Algorithm.Graphing;
+using Dijkstra.Algorithm.Pathing;
 using Xunit;
 
-namespace DijkstraAlgorithm.Tests
+namespace Dijkstra.Algorithm.Tests
 {
     public class Demo
     {

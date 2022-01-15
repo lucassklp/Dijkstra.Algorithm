@@ -1,1 +1,1 @@
-dotnet test .\DijkstraAlgorithm.Tests\DijkstraAlgorithm.Tests.csproj
+dotnet test .\Dijkstra.Algorithm.Tests\Dijkstra.Algorithm.Tests.csproj

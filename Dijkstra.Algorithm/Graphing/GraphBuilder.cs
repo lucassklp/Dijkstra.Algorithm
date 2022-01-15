@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DijkstraAlgorithm.Exceptions;
+using Dijkstra.Algorithm.Exceptions;
 
-namespace DijkstraAlgorithm.Graphing
+namespace Dijkstra.Algorithm.Graphing
 {
     public class GraphBuilder
     {

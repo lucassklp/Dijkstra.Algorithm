@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DijkstraAlgorithm.Graphing;
+using Dijkstra.Algorithm.Graphing;
 
-namespace DijkstraAlgorithm.Pathing
+namespace Dijkstra.Algorithm.Pathing
 {
     public class Path
     {

@@ -4,8 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>lucassklp</Authors>
-    <PackageLicense>https://github.com/lucassklp/DijkstraAlgorithm/blob/master/LICENSE</PackageLicense>
-    <PackageProjectUrl>https://github.com/lucassklp/DijkstraAlgorithm</PackageProjectUrl>
+    <PackageLicense>https://github.com/lucassklp/Dijkstra.Algorithm/blob/master/LICENSE</PackageLicense>
+    <PackageProjectUrl>https://github.com/lucassklp/Dijkstra.Algorithm</PackageProjectUrl>
     <PackageTags>Dijkstra Algorithm</PackageTags>
     <Version>1.0.0</Version>
   </PropertyGroup>

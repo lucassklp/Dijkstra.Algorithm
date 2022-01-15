@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DijkstraAlgorithm\DijkstraAlgorithm.csproj" />
+    <ProjectReference Include="..\Dijkstra.Algorithm\Dijkstra.Algorithm.csproj" />
   </ItemGroup>
 
 </Project>

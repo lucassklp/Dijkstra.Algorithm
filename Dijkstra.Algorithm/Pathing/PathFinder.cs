@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DijkstraAlgorithm.Exceptions;
-using DijkstraAlgorithm.Graphing;
+using Dijkstra.Algorithm.Exceptions;
+using Dijkstra.Algorithm.Graphing;
 
-namespace DijkstraAlgorithm.Pathing
+namespace Dijkstra.Algorithm.Pathing
 {
     public class PathFinder
     {

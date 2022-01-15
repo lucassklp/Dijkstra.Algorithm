@@ -1,4 +1,4 @@
-﻿namespace DijkstraAlgorithm.Graphing
+﻿namespace Dijkstra.Algorithm.Graphing
 {
     public class Link
     {

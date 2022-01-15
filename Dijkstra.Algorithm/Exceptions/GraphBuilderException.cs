@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DijkstraAlgorithm.Exceptions
+namespace Dijkstra.Algorithm.Exceptions
 {
     public class GraphBuilderException : Exception
     {

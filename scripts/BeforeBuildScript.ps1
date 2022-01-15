@@ -6,6 +6,6 @@ function UpdateVersion ($path) {
     $xml.Save($file.FullName)
 }
 
-UpdateVersion ('.\DijkstraAlgorithm\DijkstraAlgorithm.csproj')
+UpdateVersion ('.\Dijkstra.Algorithm\Dijkstra.Algorithm.csproj')
 
 dotnet restore
