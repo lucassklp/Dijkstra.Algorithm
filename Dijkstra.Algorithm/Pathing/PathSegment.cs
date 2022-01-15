@@ -4,7 +4,7 @@ namespace Dijkstra.Algorithm.Pathing
 {
     public class PathSegment
     {
-        private PathSegment(Node origin, Node destination, double weight)
+        public PathSegment(Node origin, Node destination, double weight)
         {
             Weight = weight;
             Origin = origin;
@@ -15,9 +15,5 @@ namespace Dijkstra.Algorithm.Pathing
         public Node Destination { get; }
         public double Weight { get; }
 
-        internal static PathSegment Create(Node origin, Node destination, double weigth)
-        {
-            return new PathSegment(origin, destination, weigth);
-        }
     }
 }

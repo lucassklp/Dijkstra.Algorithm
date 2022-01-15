@@ -10,7 +10,7 @@ namespace Dijkstra.Algorithm.Pathing
     {
         private readonly Graph _graph;
 
-        internal PathFinder(Graph graph)
+        public PathFinder(Graph graph)
         {
             if (graph == null)
                 throw new PathFinderException("Cannot create path finder with null graph.");
@@ -131,7 +131,7 @@ namespace Dijkstra.Algorithm.Pathing
 
         private static PathSegment CreateSegment(Record currentRecord)
         {
-            return PathSegment.Create(currentRecord.PreviousVertex, currentRecord.Vertex,
+            return new PathSegment(currentRecord.PreviousVertex, currentRecord.Vertex,
                 currentRecord.PreviousVertex.Links.Single(link => link.Destination == currentRecord.Vertex).Weight);
         }
 
