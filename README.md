@@ -9,13 +9,13 @@ This is a fork of [agabani's dijkstra C# implementation](https://github.com/agab
 If you are using Package Manager:
 
 ```bash
-Install-Package Dijkstra.Algorithm -Version 1.0.4
+Install-Package Dijkstra.Algorithm -Version 1.0.5
 ```
 
 If you are using .NET CLI
 
 ```bash
-dotnet add package Dijkstra.Algorithm --version 1.0.4
+dotnet add package Dijkstra.Algorithm --version 1.0.5
 ```
 
 ## Example Usage

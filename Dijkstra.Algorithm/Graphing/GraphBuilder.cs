@@ -30,7 +30,21 @@ namespace Dijkstra.Algorithm.Graphing
             if (!_nodes.ContainsKey(id))
                 throw new GraphBuilderException($"Node \"{id}\" do not exists.");
 
+            //Remove all links from this node
+            _links.Remove(id);
+
+            //Remove all links to this node
+            foreach(var link in _links.Values)
+            {
+                if (link.ContainsKey(id))
+                {
+                    link.Remove(id);
+                }
+            }
+
+            //Remove the node effectively
             _nodes.Remove(id);
+
             return this;
         }
 
